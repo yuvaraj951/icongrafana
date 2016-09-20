@@ -1,0 +1,36 @@
+<navbar icon="fa fa-bell-o" title="Maintenance Alerts" title-url="org">
+</navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Update Maintenance Alerts</h1>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Updating the Maintenance Alerts of  the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+
+
+    <form name="userActionForm" class="gf-form-group">
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Name</span>
+        <input class="gf-form-input max-width-21" type="text"  required ng-model="alerts.name" >
+      </div>
+      <div class="gf-form">
+        <span class="gf-form-label width-9 height-36" style="height: 70px;">Message<br></span>
+        <textarea class="gf-form-input max-width-21  height-36" type="text" required ng-model="alerts.message"></textarea>
+      </div>
+
+      <div class="gf-form">
+        <button type="submit" class="btn gf-form-btn btn-success" ng-click="updateUserAction(alerts)">Update</button>
+      </div>
+
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="modal-body" ng-controller="UserInviteCtrl" ng-init="init()">
+
+  <div class="modal-header">
+    <h2 class="modal-header-title">
+      AddProcess
+    </h2>
+    <a class="modal-header-close" ng-click="dismiss();">
+      <i class="fa fa-remove"></i>
+    </a>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Send invite or add existing Grafana users to the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+    <form name="processForm">
+      <div class="gf-form-group">
+        <div class="gf-form-inline" ng-repeat="p in process">
+          <div class="gf-form max-width-21">
+            <span class="gf-form-label">Process Name</span>
+            <input type="text" ng-model="p.processName" required class="gf-form-input" placeholder="Process Name">
+          </div>
+
+          <div><br></div>
+          <div class="gf-form max-width-21">
+            <span class="gf-form-label">Created By</span>
+            <input type="text" ng-model="p.updatedBy" class="gf-form-input" placeholder="Name  ">
+          </div>
+
+          <div class="gf-form gf-size-auto">
+            <a class="gf-form-label pointer" tabindex="1" ng-click="removeInvite(invite)">
+              <i class="fa fa-remove"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="gf-form-button-row">
+        <button type="submit" class="btn btn-success" ng-click="sendProcess(p);">Add Process</button>
+        <a class="btn-text" ng-click="dismiss()">Cancel</a>
+      </div>
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>

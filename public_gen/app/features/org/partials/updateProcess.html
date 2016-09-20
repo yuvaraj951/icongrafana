@@ -1,0 +1,77 @@
+<navbar icon="icon-gf icon-gf-users" title="Process" title-url="org/process">
+</navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Update Process</h1>
+  </div>
+
+<div class="modal-content">
+
+  <div class="modal-tagline p-b-2">
+    Updating the process of  the organization
+    <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+  </div>
+
+
+
+  <form name="updateForm" class="gf-form-group">
+    <div class="gf-form">
+      <span class="gf-form-label width-9">Process Name</span>
+      <input class="gf-form-input max-width-21" type="text"  required ng-model="process.processName" >
+    </div>
+
+    <div class="gf-form">
+      <span class="gf-form-label width-9">Updated By</span>
+      <input class="gf-form-input max-width-21" type="text" required ng-model="process.updatedBy">
+    </div>
+    <div class="gf-form-button-row">
+      <button type="submit" class="btn btn-success" ng-click="update()">Update</button>
+    </div>
+
+    <div class="clearfix"></div>
+
+  </form>
+</div>
+</div>
+  <div class="page-container" style="margin-top: -100px;">
+    <div class="page-header">
+      <h1>Sub Process of  <span class="highlight-word">{{process.processName}}</span></h1>
+    </div>
+
+  <div class="tab-content">
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
+
+        <th>Sub Process</th>
+        <th>CreatedBy</th>
+        <th></th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="p in subprocesses">
+
+
+        <td>
+          <span class="ellipsis">{{p.subProcessName}}</span>
+        </td>
+        <td>
+          <span class="ellipsis">{{p.updatedBy}}</span>
+        </td>
+
+
+        <td class="text-right">
+          <a href="org/subprocess/update/{{p.subProcessId}}" class="btn btn-inverse btn-small">
+            <i class="fa fa-edit"></i>
+            Edit
+          </a>
+        </td>
+        <td>
+
+        </td>
+      </tr>
+    </table><br>&nbsp;&nbsp;
+
+
+  </div>
+</div>

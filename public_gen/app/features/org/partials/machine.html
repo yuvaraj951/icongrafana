@@ -1,0 +1,52 @@
+<navbar icon="icon-gf icon-gf-users" title="Organization Users" title-url="org/machine">
+</navbar>
+
+<div class="page-container">
+  <div class="page-header">
+    <h1>Organization Process</h1>
+
+
+
+  <div ng-if="ctrl.editor.index === 1" >
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
+
+        <th>Machine Name</th>
+        <th>Description</th>
+        <th>CreatedBy</th>
+        <th>Vendor</th>
+        <th></th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="machine in ctrl.machines">
+
+        <td><span class="ellipsis">{{machine.machineName}}</span></td>
+        <td>
+          <span class="ellipsis">{{machine.description}}</span>
+        </td>
+        <td>
+          <span class="ellipsis">{{machine.updatedBy}}</span>
+        </td>
+        <td>
+          <span class="ellipsis">{{machine.vendor}}</span>
+        </td>
+        <td class="text-right">
+          <button class="btn btn-inverse btn-mini " ng-click="ctrl.updateProcessModal(p)"   style="width:100px"  clipboard-button ng-click="ctrl.copyInviteToClipboard($event)">
+            <i class="fa fa-clipboard"></i> edit
+          </button>
+        </td>
+        <td>
+          <a ng-click="ctrl.removeProcess(p)" class="btn btn-danger btn-mini">
+            <i class="fa fa-remove"></i>
+          </a>
+        </td>
+      </tr>
+    </table><br>&nbsp;&nbsp;
+    <button class="btn btn-success"   ng-click="ctrl.openProcessModal()" [ngStyle]="{style: expression}">
+      <i class="fa fa-plus"></i>
+      Add Process
+    </button>
+  </div>
+</div>

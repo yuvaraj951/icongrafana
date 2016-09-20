@@ -1,0 +1,209 @@
+<navbar icon="fa fa-cubes" title="Process" title-url="org/process">
+</navbar>
+
+<div class="page-container">
+  <div class="page-header">
+    <h1>Organization Process</h1>
+    <i ng-if="loading" class="fa fa-spinner fa-spin"></i>
+    <div class="page-header-tabs">
+
+
+      <ul class="gf-tabs">
+        <li class="gf-tabs-item">
+          <a class="gf-tabs-link" ng-click="ctrl.editor.index = 0" ng-class="{active: ctrl.editor.index === 0}">
+            Process ({{ctrl.process.length}})
+          </a>
+        </li>
+        <li class="gf-tabs-item">
+          <a class="gf-tabs-link" ng-click="ctrl.editor.index = 1" ng-class="{active: ctrl.editor.index === 1}">
+            Sub Process ({{ctrl.subprocess.length}})
+          </a>
+        </li>
+        <li class="gf-tabs-item">
+          <a class="gf-tabs-link" ng-click="ctrl.editor.index = 2" ng-class="{active: ctrl.editor.index === 2}">
+            Machines ({{ctrl.machines.length}})
+          </a>
+        </li>
+        <li class="gf-tabs-item">
+          <a class="gf-tabs-link" ng-click="ctrl.editor.index = 3" ng-class="{active: ctrl.editor.index === 3}">
+            Maintenance({{ctrl.maintenances.length}})
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div ng-if="ctrl.editor.index === 0" class="tab-content">
+
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
+
+        <th>Main Process</th>
+
+        <th>CreatedBy</th>
+        <th></th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="p in ctrl.process">
+
+        <td><span class="ellipsis">{{p.processName}}</span></td>
+
+        <td>
+          <span class="ellipsis">{{p.updatedBy}}</span>
+        </td>
+
+
+        <td class="text-right">
+          <a href="org/process/edit/{{p.processId}}" class="btn btn-inverse btn-small">
+            <i class="fa fa-edit"></i>
+            Edit
+          </a>
+        </td>
+        <td>
+          <a ng-click="ctrl.removeProcess(p)" class="btn btn-danger btn-mini">
+            <i class="fa fa-remove"></i>
+          </a>
+        </td>
+      </tr>
+    </table><br>&nbsp;&nbsp;
+    <button class="btn btn-success"   ng-click="ctrl.openProcessModal()" [ngStyle]="{style: expression}">
+      <i class="fa fa-plus"></i>
+      Add Process
+    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  </div>
+  <div ng-if="ctrl.editor.index === 1" class="tab-content">
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
+
+        <th>Main Process</th>
+        <th>Sub Process</th>
+        <th>CreatedBy</th>
+        <th></th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="p in ctrl.subprocess">
+
+        <td><span class="ellipsis">{{p.processName}}</span></td>
+        <td>
+          <span class="ellipsis">{{p.subProcessName}}</span>
+        </td>
+        <td>
+          <span class="ellipsis">{{p.updatedBy}}</span>
+        </td>
+
+
+        <td class="text-right">
+          <a href="org/subprocess/edit/{{p.subProcessId}}" class="btn btn-inverse btn-small">
+            <i class="fa fa-edit"></i>
+            Edit
+          </a>
+        </td>
+        <td>
+          <a ng-click="ctrl.removeSubProcess(p)" class="btn btn-danger btn-mini">
+            <i class="fa fa-remove"></i>
+          </a>
+        </td>
+      </tr>
+    </table><br>&nbsp;&nbsp;
+
+    <button class="btn btn-success"   ng-click="ctrl.openParentModal()" [ngStyle]="{style: expression}">
+      <i class="fa fa-plus"></i>
+      Add Sub Process
+    </button>
+  </div>
+  <div ng-if="ctrl.editor.index === 2" >
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
+
+        <th>Machine Name</th>
+        <th>Description</th>
+        <th>CreatedBy</th>
+        <th>Vendor</th>
+        <th></th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="machine in ctrl.machines">
+
+        <td><span class="ellipsis">{{machine.machineName}}</span></td>
+        <td>
+          <span class="ellipsis">{{machine.description}}</span>
+        </td>
+        <td>
+          <span class="ellipsis">{{machine.updatedBy}}</span>
+        </td>
+        <td>
+          <span class="ellipsis">{{machine.vendor}}</span>
+        </td>
+
+        <td class="text-right">
+          <a href="org/machine/edit/{{machine.machineId}}" class="btn btn-inverse btn-small">
+            <i class="fa fa-edit"></i>
+            Edit
+          </a>
+        <td>
+          <a ng-click="ctrl.removeMachine(machine)" class="btn btn-danger btn-mini">
+            <i class="fa fa-remove"></i>
+          </a>
+        </td>
+      </tr>
+    </table><br>&nbsp;&nbsp;
+    <button class="btn btn-success"   ng-click="ctrl.openMachineModal()" [ngStyle]="{style: expression}">
+      <i class="fa fa-plus"></i>
+      Add Machine
+    </button>
+  </div>
+
+<div ng-if="ctrl.editor.index === 3" >
+  <table class="filter-table form-inline">
+    <thead>
+    <tr style="width:100px">
+
+      <th>Component Name</th>
+      <th>Parameter</th>
+      <th>Message</th>
+      <th>Interval</th>
+      <th></th>
+
+      <th></th>
+      <th style="width: 34px;"></th>
+    </tr>
+    </thead>
+    <tr ng-repeat="maintenance in ctrl.maintenances">
+
+      <td><span class="ellipsis">{{maintenance.componentName}}</span></td>
+      <td>
+        <span class="ellipsis">{{maintenance.parameter}}</span>
+      </td>
+      <td>
+        <span class="ellipsis">{{maintenance.message}}</span>
+      </td>
+      <td>
+      <span class="ellipsis">{{maintenance.interval}}</span>
+      </td>
+
+      <td class="text-right">
+        <a href="org/maintenance/edit/{{maintenance.id}}" class="btn btn-inverse btn-small">
+          <i class="fa fa-edit"></i>
+          Edit
+        </a>
+      <td>
+      <td>
+        <a ng-click="ctrl.removeMaintenance(maintenance)" class="btn btn-danger btn-mini">
+          <i class="fa fa-remove"></i>
+        </a>
+      </td>
+    </tr>
+  </table><br>&nbsp;&nbsp;
+  <button class="btn btn-success"   ng-click="ctrl.openMaintenanceModal()" [ngStyle]="{style: expression}">
+    <i class="fa fa-plus"></i>
+    Add Maintenance
+  </button>
+</div>
+</div></div>

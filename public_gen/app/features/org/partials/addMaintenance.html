@@ -1,0 +1,61 @@
+<div class="modal-body" ng-controller="UserInviteCtrl" ng-init="init()">
+
+  <div class="modal-header">
+    <h2 class="modal-header-title">
+      Add Maintenance Plan
+    </h2>
+    <a class="modal-header-close" ng-click="dismiss();">
+      <i class="fa fa-remove"></i>
+    </a>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Send invite or add existing Grafana users to the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+    <form name="maintenanceForm">
+      <div class="gf-form-group">
+        <div class="gf-form-inline" ng-repeat="maintenance in maintenances">
+          <div class="gf-form max-width-21">
+            <span class="gf-form-label">Component Name</span>
+            <input type="text" ng-model="maintenance.component" required class="gf-form-input" placeholder="Component Name">
+          </div><div><br></div>
+          <div class="gf-form max-width-21">
+            <span class="gf-form-label">Parameter</span>
+            <input type="text" ng-model="maintenance.parameter" class="gf-form-input" placeholder="parameter">
+          </div><br>
+          <div><br></div>
+          <div class="gf-form max-width-35">
+            <span class="gf-form-label " style="height: 70px;">Message</span>
+            <textarea type="text" ng-model="maintenance.message" class="gf-form-input" placeholder="message  "></textarea>
+          </div><br>
+          <div class="gf-form max-width-21 ">
+            <span class="gf-form-label">Interval</span>
+            <select ng-model="maintenance.interval" selected="Weekly" class="gf-form-input" ng-options="f for f in ['Weekly', 'Monthly', 'Quaterly', 'Yearly']">
+            </select>
+          </div>
+
+
+          <div class="gf-form gf-size-auto">
+            <a class="gf-form-label pointer" tabindex="1" ng-click="removeInvite(invite)">
+              <i class="fa fa-remove"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="gf-form-button-row">
+        <button type="submit" class="btn btn-success" ng-click="sendMaintenance();">Add Maintenance</button>
+        <a class="btn-text" ng-click="dismiss()">Cancel</a>
+      </div>
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>

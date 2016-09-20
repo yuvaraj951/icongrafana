@@ -1,0 +1,43 @@
+<navbar icon="icon-gf icon-gf-users" title="Process" title-url="org">
+</navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Update Machine</h1>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Updating the process of  the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+
+
+    <form name="updateMachineForm" class="gf-form-group">
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Machine Name</span>
+        <input class="gf-form-input max-width-21" type="text"  required ng-model="machine.machineName" >
+      </div>
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Description<br></span>
+        <textarea class="gf-form-input max-width-21  height-36" type="text" required ng-model="machine.description"></textarea>
+      </div>
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Updated By</span>
+        <input class="gf-form-input max-width-21" type="text" required ng-model="machine.updatedBy">
+      </div>
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Vendor</span>
+        <input class="gf-form-input max-width-21" type="text" required ng-model="machine.vendor">
+      </div>
+      <div class="gf-form">
+        <button type="submit" class="btn gf-form-btn btn-success" ng-click="updateMachine()">Update</button>
+      </div>
+
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>

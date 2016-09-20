@@ -1,0 +1,44 @@
+<navbar icon="icon-gf icon-gf-users" title="Process" title-url="org">
+</navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Update Maintenance</h1>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Updating the process of  the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+
+
+    <form name="updateMaintenanceForm" class="gf-form-group">
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Component</span>
+        <input class="gf-form-input max-width-21" type="text"  required ng-model="maintenance.componentName" >
+      </div>
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Parameter</span>
+        <input class="gf-form-input max-width-21" type="text" required ng-model="maintenance.parameter">
+      </div>
+      <div class="gf-form">
+        <span class="gf-form-label width-9" style="height: 70px;">Message</span>
+        <textarea class="gf-form-input max-width-21" type="text" required ng-model="maintenance.message"></textarea>
+      </div>
+      <div class="gf-form max-width-21 ">
+        <span class="gf-form-label">Interval</span>
+        <select ng-model="maintenance.interval" selected="Weekly" class="gf-form-input" ng-options="f for f in ['Weekly', 'Monthly', 'Quaterly', 'Yearly']">
+        </select>
+      </div>
+      <div class="gf-form">
+        <button type="submit" class="btn gf-form-btn btn-success" ng-click="updateMaintenance()">Update</button>
+      </div>
+
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<navbar icon="icon-gf icon-gf-users" title="Process" title-url="org/process">
+</navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Update Sub Process</h1>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Updating the process of  the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+
+
+    <form name="updateSubForm" class="gf-form-group">
+      <div class="gf-form max-width-14">
+        <span class="gf-form-label">Main Process</span>
+        <select type="text"  ng-model="subprocess.processName" required class="gf-form-input" >
+          <option ng-repeat="p in allprocess" value="{{p.processName}}">{{p.processName}}</option>
+        </select>
+
+      </div>
+
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Sub Process </span>:{{subprocess.subProcessName}}
+
+      </div>
+
+      <div class="gf-form">
+        <span class="gf-form-label width-9">Updated By</span>
+        <input class="gf-form-input max-width-21" type="text" required ng-model="subprocess.updatedBy">
+      </div>
+      <div class="gf-form-button-row">
+        <button type="submit" class="btn btn-success" ng-click="updateSubProcess()">Update</button>
+      </div>
+
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="modal-body" ng-controller="UserInviteCtrl" ng-init="init()">
+
+  <div class="modal-header">
+    <h2 class="modal-header-title">
+      AddProcess
+    </h2>
+    <a class="modal-header-close" ng-click="dismiss();">
+      <i class="fa fa-remove"></i>
+    </a>
+  </div>
+
+  <div class="modal-content">
+
+    <div class="modal-tagline p-b-2">
+      Send invite or add existing Grafana users to the organization
+      <span class="highlight-word">{{contextSrv.user.orgName}}</span>
+    </div>
+
+
+
+    <form name="parentProcessForm">
+      <div class="gf-form-group">
+        <div class="gf-form-inline" ng-repeat="sp in subprocess">
+          <div class="gf-form max-width-14">
+            <span class="gf-form-label">Main Process</span>
+            <select type="text"  ng-model="sp.processName" required class="gf-form-input" >
+              <option ng-repeat="p in parent" value="{{p.processName}}">{{p.processName}}</option>
+            </select>
+
+          </div><br>
+          <div class="gf-form max-width-25">
+            <span class="gf-form-label">Sub Process</span>
+            <input type="text" ng-model="sp.subProcessName" class="gf-form-input" placeholder="Parent Name"><br>
+          </div>
+          <br><div>&nbsp;&nbsp;<br></div>
+          <div class="gf-form max-width-21">
+            <span class="gf-form-label">Updated By</span>
+            <input type="text" ng-model="sp.updatedBy" class="gf-form-input" placeholder="Name  ">
+          </div>
+
+          <div class="gf-form gf-size-auto">
+            <a class="gf-form-label pointer" tabindex="1" ng-click="removeInvite(invite)">
+              <i class="fa fa-remove"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="gf-form-button-row">
+        <button type="submit" class="btn btn-success" ng-click="sendParentProcess(sp);">Add Sub Process</button>
+        <a class="btn-text" ng-click="dismiss()">Cancel</a>
+      </div>
+      <div class="clearfix"></div>
+
+    </form>
+
+  </div>
+</div>
