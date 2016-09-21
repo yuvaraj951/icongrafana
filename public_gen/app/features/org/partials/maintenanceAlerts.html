@@ -35,9 +35,8 @@
         <div class="gf-form-inline">
           <div class="gf-form max-width-14">
             <span class="gf-form-label"> <i class="fa fa-filter"></i>&nbsp;Interval</span>
-              <select type="text" ng-model="alerts.interval" class="input-medium" ng-options="f for f in ['Daily', 'Monthly', 'Quaterly', 'Yearly']" >
-              </select>
-
+            <select type="text" ng-model="alerts.interval" class="input-medium" ng-options="f for f in ['Daily', 'Monthly', 'Quaterly', 'Yearly']" >
+            </select>
           </div>&nbsp;&nbsp;&nbsp;&nbsp;
           <div class="gf-form max-width-14">
             <button type="submit" class="btn btn-success" ng-click="ctrl.getAlerts(alerts);"><i class="fa fa-bell-o"></i>Get Alert Messages</button>
@@ -68,7 +67,7 @@
 
 
         <td>
-          <span class="ellipsis"><i class="fa fa-thumbs-o-up">&nbsp;</i>{{mAlert.status}}</span>
+          <span class="ellipsis"> <i class="fa fa-exclamation-triangle" ng-if="'Done'!=mAlert.status" >&nbsp;</i>{{mAlert.status}}</span>
         </td>
 
         <td class="text-right" >
@@ -90,64 +89,58 @@
   <div ng-if="ctrl.editor.index === 1" class="tab-content">
 
 
-      <form name="parentProcessForm">
-          <div class="gf-form-group">
-              <div class="gf-form-inline">
-                  <div class="gf-form max-width-14">
-                      <span class="gf-form-label"> <i class="fa fa-filter"></i>&nbsp;Interval</span>
-                      <select type="text" ng-model="maintenanceHistory.interval" class="input-medium" ng-options="f for f in ['Daily', 'Monthly', 'Quaterly', 'Yearly']" >
-                      </select>
-
-                  </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div class="gf-form max-width-14">
-                      <button type="submit" class="btn btn-success" ng-click="ctrl.getMaintenanceAlerts(maintenanceHistory);"><i class="fa fa-bell-o"></i>Get Alert Messages</button>
-                  </div>
-                  <div class="clearfix"></div>
-              </div>
+    <form name="maintenanceHistoryForm">
+      <div class="gf-form-group">
+        <div class="gf-form-inline">
+          <div class="gf-form max-width-14">
+            <span class="gf-form-label"> <i class="fa fa-filter"></i>&nbsp;Interval</span>
+            <select type="text" ng-model="mHistory.interval" class="input-medium" ng-options="f for f in ['Daily', 'Monthly', 'Quaterly', 'Yearly']" >
+            </select>
+          </div>&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="gf-form max-width-14">
+            <button type="submit" class="btn btn-success" ng-click="ctrl.getMaintenaneHistory(mHistory);"><i class="fa fa-bell-o"></i>Get Alert Messages</button>
           </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
 
 
 
-      </form>
+    </form>
 
 
-      <table class="filter-table form-inline">
-          <thead>
-          <tr style="width:100px">
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
 
-              <th>Alert Message</th>
+        <th>Alert Message</th>
 
-              <th>Status</th>
-              <th></th>
-              <th style="width: 34px;"></th>
-          </tr>
-          </thead>
-          <tr ng-repeat="mHistory in ctrl.maintenanceHistory">
+        <th>Status</th>
+        <th></th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="mhistory in ctrl.maintenanceHistoryByInterval">
 
-              <td><span class="ellipsis">{{mHistory.message}}</span></td>
-
-
-              <td>
-                  <span class="ellipsis"><i class="fa fa-thumbs-o-up">&nbsp;</i>{{mHistory.status}}</span>
-              </td>
-
-              <td class="text-right" >
-
-                  <button ng-if="'Done'!=mAlert.status" class="btn btn-success"   ng-click="ctrl.openMaintenanceHistoryModal(mHistory)" [ngStyle]="{style: expression}">
-                      <i class="fa fa-wrench"></i>
-                      Action
-                  </button>
-              </td>
-
-              <td>
-
-              </td>
-          </tr>
-      </table><br>&nbsp;&nbsp;
+        <td><span class="ellipsis">{{mhistory.message}}</span></td>
 
 
-  </div>
+        <td>
+          <span class="ellipsis"><i class="fa fa-thumbs-o-up">&nbsp;</i>{{mhistory.status}}</span>
+        </td>
 
+        <td class="text-right" >
 
+          <button ng-if="'Done'!=mhistory.status" class="btn btn-success"   ng-click="ctrl.openMaintenanceHistoryModal(mhistory)" [ngStyle]="{style: expression}">
+            <i class="fa fa-wrench"></i>
+            Action
+          </button>
+        </td>
+
+        <td>
+
+        </td>
+      </tr>
+    </table><br>&nbsp;&nbsp;
 
 </div></div>

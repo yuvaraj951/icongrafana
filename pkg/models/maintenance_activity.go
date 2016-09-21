@@ -15,7 +15,7 @@ type MaintenanceActivityDTO struct {
   Id       int64             `json:"id"`
   Name      string       `json:"name"`
   Message   string     `json:"message"`
-  Updated      string    `json:"updated"`
+  Updated      time.Time    `json:"updated"`
 }
 
 type AddMaintenanceActivity struct {
@@ -23,7 +23,7 @@ type AddMaintenanceActivity struct {
   Id       int64             `json:"id"`
   Name      string       `json:"name"`
   Message   string     `json:"message"`
-  Updated      string    `json:"updated"`
+  Updated      time.Time    `json:"updated"`
 
 }
 type DeleteMaintenanceActivity struct {

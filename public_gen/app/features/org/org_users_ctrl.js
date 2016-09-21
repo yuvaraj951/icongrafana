@@ -56,9 +56,9 @@ System.register(['../../core/core_module'], function(exports_1) {
                        _this.maintenanceAlerts = maintenanceAlerts;
                             });
                      this.backendSrv.get('/api/org/maintenanceHistory')
-                                          .then(function (maintenanceHistory) {
-                                            _this.maintenanceHistory = maintenanceHistory;
-                                                 });
+                                                 .then(function (maintenanceHistory) {
+                                                   _this.maintenanceHistory = maintenanceHistory;
+                                                        });
 
                 };
                 OrgUsersCtrl.prototype.updateOrgUser = function (user) {
@@ -272,28 +272,31 @@ var _this=this;
                      _this.maintenanceAlert = maintenanceAlert;
                       });
                 };
-OrgUsersCtrl.prototype.getMaintenanceAlerts = function (maintenanceHistory) {
-var _this=this;
-                    this.backendSrv.get('/api/org/maintenanceHistory/' + maintenanceHistory.interval)
-                     .then(function (maintenanceHistory) {
-                     _this.maintenanceHistory = maintenanceHistory;
-                      });
-                };
+
 
 OrgUsersCtrl.prototype.openMaintenanceHistoryModal = function (mHistory) {
 this.maintenanceHistorySent(mHistory);
      var modalScope = this.$scope.$new();
+    this.$scope.alert =mHistory;
 
          this.$scope.appEvent('show-modal', {
-          src: 'public/app/features/org/partials/addMaintenanceAction.html',
+          src: 'public/app/features/org/partials/addMaintenanceActivity.html',
             modalClass: 'invite-modal',
              scope: modalScope
    });
         };
 
-OrgUsersCtrl.prototype.maintenanceHistorySent = function (mHistory) {
+ OrgUsersCtrl.prototype.maintenanceHistorySent = function (mHistory) {
          this.backendSrv.patch('/api/org/maintenanceHistory/' + mHistory.id)
             };
+
+OrgUsersCtrl.prototype.getMaintenaneHistory = function (mHistory) {
+var _this=this;
+                    this.backendSrv.get('/api/org/maintenanceHistory/get/' + mHistory.interval)
+                     .then(function (maintenanceHistoryByInterval) {
+                     _this.maintenanceHistoryByInterval = maintenanceHistoryByInterval;
+                      });
+                };
 
                 return OrgUsersCtrl;
             })();
