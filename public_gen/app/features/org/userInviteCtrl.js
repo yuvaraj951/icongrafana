@@ -24,9 +24,12 @@ function (angular, _) {
 $scope.subprocess = [
           {processName: '', subProcessName: '', updatedBy: ''},
         ];
-        $scope.maintenance_updated = [
+        $scope.malfunalert_activity = [
                   {name: '', message: ''},
                 ];
+         $scope.maintenance_activity = [
+                          {name: '', message: ''},
+                        ];
     $scope.options = {skipEmails: false};
     $scope.init = function() {
        $scope.getProcess();
@@ -189,15 +192,26 @@ $scope.sendUpdate = function() {
                $scope.sendSingleInvite5(0);
                };
               $scope.sendSingleInvite5 = function(index5) {
-               var maintenance_updated = $scope.maintenance_updated[index5];
-               maintenance_updated.skipEmails = $scope.options.skipEmails;
-               var id=maintenance_updated.id;
+               var malfunalert_activity = $scope.malfunalert_activity[index5];
+               malfunalert_activity.skipEmails = $scope.options.skipEmails;
+               var id=malfunalert_activity.id;
 
-               return backendSrv.post('/api/org/maintenanceAlertsUser', maintenance_updated).finally(function() {
+               return backendSrv.post('/api/org/maintenanceAlertsUser', malfunalert_activity).finally(function() {
                   $scope.maintenanceAlertsSent();
                 });
              };
 
+$scope.sendMaintenanceActivity = function() {
+               if (!$scope.maintenanceActionForm.$valid) { return; }
+               $scope.sendSingleInvite6(0);
+               };
+              $scope.sendSingleInvite6 = function(index6) {
+               var maintenance_activity= $scope.maintenance_activity[index6];
+               maintenance_activity.skipEmails = $scope.options.skipEmails;
 
+               return backendSrv.post('/api/org/maintenanceActivity', maintenance_activity).finally(function() {
+                  $scope.maintenanceHistorySent();
+                });
+             };
   });
 });

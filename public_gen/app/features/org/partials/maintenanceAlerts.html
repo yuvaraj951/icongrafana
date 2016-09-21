@@ -35,9 +35,9 @@
         <div class="gf-form-inline">
           <div class="gf-form max-width-14">
             <span class="gf-form-label"> <i class="fa fa-filter"></i>&nbsp;Interval</span>
-            <select type="text"  ng-model="alerts.interval" required class="gf-form-input" >
-              <option ng-repeat="alert in ctrl.maintenanceAlerts" value="{{alert.interval}}">{{alert.interval}}</option>
-            </select>
+              <select type="text" ng-model="alerts.interval" class="input-medium" ng-options="f for f in ['Daily', 'Monthly', 'Quaterly', 'Yearly']" >
+              </select>
+
           </div>&nbsp;&nbsp;&nbsp;&nbsp;
           <div class="gf-form max-width-14">
             <button type="submit" class="btn btn-success" ng-click="ctrl.getAlerts(alerts);"><i class="fa fa-bell-o"></i>Get Alert Messages</button>
@@ -90,46 +90,62 @@
   <div ng-if="ctrl.editor.index === 1" class="tab-content">
 
 
-    <table class="filter-table form-inline">
-      <thead>
-      <tr style="width:100px">
+      <form name="parentProcessForm">
+          <div class="gf-form-group">
+              <div class="gf-form-inline">
+                  <div class="gf-form max-width-14">
+                      <span class="gf-form-label"> <i class="fa fa-filter"></i>&nbsp;Interval</span>
+                      <select type="text" ng-model="maintenanceHistory.interval" class="input-medium" ng-options="f for f in ['Daily', 'Monthly', 'Quaterly', 'Yearly']" >
+                      </select>
 
-        <th>Main Process</th>
-        <th>Sub Process</th>
-        <th>CreatedBy</th>
-        <th></th>
-        <th style="width: 34px;"></th>
-      </tr>
-      </thead>
-      <tr ng-repeat="p in ctrl.subprocess">
-
-        <td><span class="ellipsis">{{p.processName}}</span></td>
-        <td>
-          <span class="ellipsis">{{p.subProcessName}}</span>
-        </td>
-        <td>
-          <span class="ellipsis">{{p.updatedBy}}</span>
-        </td>
+                  </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="gf-form max-width-14">
+                      <button type="submit" class="btn btn-success" ng-click="ctrl.getMaintenanceAlerts(maintenanceHistory);"><i class="fa fa-bell-o"></i>Get Alert Messages</button>
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+          </div>
 
 
-        <td class="text-right">
-          <a href="org/subprocess/edit/{{p.subProcessId}}" class="btn btn-inverse btn-small">
-            <i class="fa fa-edit"></i>
-            Edit
-          </a>
-        </td>
-        <td>
-          <a ng-click="ctrl.removeSubProcess(p)" class="btn btn-danger btn-mini">
-            <i class="fa fa-remove"></i>
-          </a>
-        </td>
-      </tr>
-    </table><br>&nbsp;&nbsp;
 
-    <button class="btn btn-success"   ng-click="ctrl.openParentModal()" [ngStyle]="{style: expression}">
-      <i class="fa fa-plus"></i>
-      Add Sub Process
-    </button>
+      </form>
+
+
+      <table class="filter-table form-inline">
+          <thead>
+          <tr style="width:100px">
+
+              <th>Alert Message</th>
+
+              <th>Status</th>
+              <th></th>
+              <th style="width: 34px;"></th>
+          </tr>
+          </thead>
+          <tr ng-repeat="mHistory in ctrl.maintenanceHistory">
+
+              <td><span class="ellipsis">{{mHistory.message}}</span></td>
+
+
+              <td>
+                  <span class="ellipsis"><i class="fa fa-thumbs-o-up">&nbsp;</i>{{mHistory.status}}</span>
+              </td>
+
+              <td class="text-right" >
+
+                  <button ng-if="'Done'!=mAlert.status" class="btn btn-success"   ng-click="ctrl.openMaintenanceHistoryModal(mHistory)" [ngStyle]="{style: expression}">
+                      <i class="fa fa-wrench"></i>
+                      Action
+                  </button>
+              </td>
+
+              <td>
+
+              </td>
+          </tr>
+      </table><br>&nbsp;&nbsp;
+
+
   </div>
 
 

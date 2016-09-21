@@ -39,6 +39,7 @@ func Register(r *macaron.Macaron) {
 	r.Get("/org/users/", reqSignedIn, Index)
   r.Get("/org/process/", reqSignedIn, Index)
   r.Get("/org/maintenanceAlerts/", reqSignedIn, Index)
+	r.Get("/org/maintenanceHistory/", reqSignedIn, Index)
   r.Get("/org/process/edit/*", reqSignedIn, Index)
   r.Get("/org/machine/", reqSignedIn, Index)
 	r.Get("/org/apikeys/", reqSignedIn, Index)
@@ -191,13 +192,20 @@ func Register(r *macaron.Macaron) {
       r.Get("/maintenance/:Id",wrap(GetMaintenacneById))
       r.Patch("/maintenance/:Id", bind(dtos.UpdateMaintenanceForm{}), wrap(UpdateMaintenance))
 
-      //maintenance update
+      //malfunctional alerts update
       r.Get("/maintenanceAlerts",wrap(GetMaintenanceUpdateForCurrentOrg))
       r.Get("/maintenanceAlerts/get/:interval",wrap(GetMaintenanceAlertsByInterval))
       r.Delete("/maintenanceAlerts/:id",wrap(RemoveMaintenanceUpdateCurrentOrg))
       r.Patch("/maintenanceAlerts/:id",wrap(UpdateMaintenanceCurrentOrg))
       //user action
       r.Post("/maintenanceAlertsUser", quota("maintenance_updated"),bind(m.AddMalfunalertActivity{}), wrap(AddMaintenanceAlertToCurrentOrg))
+
+	//maintenance history table
+	r.Get("/maintenance_history",wrap(GetMaintenanceHistoryForCurrentOrg))
+	r.Get("/maintenanceHistory/:interval",wrap(GetMaintenanceHistoryByInterval))
+	r.Patch("/maintenanceHistory/:id",wrap(UpdateMaintenanceHistoryCurrentOrg))
+
+
 
 		}, reqOrgAdmin)
 

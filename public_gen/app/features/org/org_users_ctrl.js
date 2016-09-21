@@ -55,6 +55,10 @@ System.register(['../../core/core_module'], function(exports_1) {
                      .then(function (maintenanceAlerts) {
                        _this.maintenanceAlerts = maintenanceAlerts;
                             });
+                     this.backendSrv.get('/api/org/maintenanceHistory')
+                                          .then(function (maintenanceHistory) {
+                                            _this.maintenanceHistory = maintenanceHistory;
+                                                 });
 
                 };
                 OrgUsersCtrl.prototype.updateOrgUser = function (user) {
@@ -268,21 +272,29 @@ var _this=this;
                      _this.maintenanceAlert = maintenanceAlert;
                       });
                 };
+OrgUsersCtrl.prototype.getMaintenanceAlerts = function (maintenanceHistory) {
+var _this=this;
+                    this.backendSrv.get('/api/org/maintenanceHistory/' + maintenanceHistory.interval)
+                     .then(function (maintenanceHistory) {
+                     _this.maintenanceHistory = maintenanceHistory;
+                      });
+                };
 
+OrgUsersCtrl.prototype.openMaintenanceHistoryModal = function (mHistory) {
+this.maintenanceHistorySent(mHistory);
+     var modalScope = this.$scope.$new();
 
-/*
-                         var modalScope = this.$scope.$new(true);
-                         modalScope.process= process;
+         this.$scope.appEvent('show-modal', {
+          src: 'public/app/features/org/partials/addMaintenanceAction.html',
+            modalClass: 'invite-modal',
+             scope: modalScope
+   });
+        };
 
-                         this.$scope.appEvent('show-modal', {
-                           src: 'public/app/features/org/partials/update.html',
-                           modalClass: 'invite-modal',
-                           scope: modalScope
-                         });
+OrgUsersCtrl.prototype.maintenanceHistorySent = function (mHistory) {
+         this.backendSrv.patch('/api/org/maintenanceHistory/' + mHistory.id)
+            };
 
-
-                       });
-                     };*/
                 return OrgUsersCtrl;
             })();
             exports_1("OrgUsersCtrl", OrgUsersCtrl);
