@@ -1,13 +1,13 @@
-[Grafana](http://grafana.org) [![Circle CI](https://circleci.com/gh/grafana/grafana.svg?style=svg)](https://circleci.com/gh/grafana/grafana) [![Coverage Status](https://coveralls.io/repos/grafana/grafana/badge.png)](https://coveralls.io/r/grafana/grafana)
+[IconGrafana](http://it.gogimco.com/) [![Circle CI](https://circleci.com/gh/grafana/grafana.svg?style=svg)](https://circleci.com/gh/grafana/grafana) [![Coverage Status](https://coveralls.io/repos/grafana/grafana/badge.png)](https://coveralls.io/r/grafana/grafana)
 ================
-[Website](http://grafana.org) |
+[Website](http://gogimco.com/) |
 [Twitter](https://twitter.com/grafana) |
 [IRC](https://webchat.freenode.net/?channels=grafana) |
 ![](https://brandfolder.com/api/favicon/icon?size=16&domain=www.slack.com)
 [Slack](http://slack.raintank.io) |
 [Email](mailto:contact@grafana.org)
 
-IconGrafana is an open source, feature rich metrics dashboard and graph editor for
+IconGrafana is an open source,feature Process line dashboards of industries and feature rich metrics dashboard and graph editor for
 Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.
 
 ![](http://grafana.org/assets/img/start_page_bg.png)
