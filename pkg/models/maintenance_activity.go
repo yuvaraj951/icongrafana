@@ -30,3 +30,7 @@ type DeleteMaintenanceActivity struct {
   OrgId int64
   Id int64
 }
+type GetMaintenanceActivity struct {
+  OrgId int64
+  Result []*MaintenanceActivityDTO
+}

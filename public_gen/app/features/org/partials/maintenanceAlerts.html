@@ -11,7 +11,7 @@
       <ul class="gf-tabs">
         <li class="gf-tabs-item">
           <a class="gf-tabs-link" ng-click="ctrl.editor.index = 0" ng-class="{active: ctrl.editor.index === 0}">
-             MalFunctional Alerts
+            MalFunctional Alerts
           </a>
         </li>
         <li class="gf-tabs-item">
@@ -86,6 +86,7 @@
 
 
   </div>
+
   <div ng-if="ctrl.editor.index === 1" class="tab-content">
 
 
@@ -142,5 +143,37 @@
         </td>
       </tr>
     </table><br>&nbsp;&nbsp;
+  </div>
 
-</div></div>
+  <div ng-if="ctrl.editor.index === 2" class="tab-content">
+
+
+    <table class="filter-table form-inline">
+      <thead>
+      <tr style="width:100px">
+
+        <th>Alert Message</th>
+
+        <th>Updated By</th>
+        <th>Updated Time</th>
+        <th style="width: 34px;"></th>
+      </tr>
+      </thead>
+      <tr ng-repeat="mActivity in ctrl.maintenanceActivity">
+
+        <td><span class="ellipsis"><i class="fa fa-envelope"  >&nbsp;</i>{{mActivity.message}}</span></td>
+
+
+        <td>
+          <span class="ellipsis"><i class="fa fa-user"  >&nbsp;</i>{{mActivity.name}}</span>
+        </td>
+        <td>
+          <span class="ellipsis"><i class="fa fa-clock-o"  >&nbsp;&nbsp;</i>{{mActivity.updated| date:'MMM d, yyyy H:mm'}}</span>
+        </td>
+        <td>
+          <span class="ellipsis"></span>
+        </td>
+
+      </tr>
+    </table><br>&nbsp;&nbsp;
+  </div></div>

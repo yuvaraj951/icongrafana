@@ -37,10 +37,10 @@ func Register(r *macaron.Macaron) {
 	r.Get("/datasources/new", reqSignedIn, Index)
 	r.Get("/datasources/edit/*", reqSignedIn, Index)
 	r.Get("/org/users/", reqSignedIn, Index)
-  r.Get("/org/process/", reqSignedIn, Index)
-  r.Get("/org/maintenanceAlerts/", reqSignedIn, Index)
-  r.Get("/org/process/edit/*", reqSignedIn, Index)
-  r.Get("/org/machine/", reqSignedIn, Index)
+	r.Get("/org/process/", reqSignedIn, Index)
+	r.Get("/org/maintenanceAlerts/", reqSignedIn, Index)
+	r.Get("/org/process/edit/*", reqSignedIn, Index)
+	r.Get("/org/machine/", reqSignedIn, Index)
 	r.Get("/org/apikeys/", reqSignedIn, Index)
 	r.Get("/dashboard/import/", reqSignedIn, Index)
 	r.Get("/admin", reqGrafanaAdmin, Index)
@@ -115,8 +115,8 @@ func Register(r *macaron.Macaron) {
 			r.Get("/preferences", wrap(GetUserPreferences))
 			r.Put("/preferences", bind(dtos.UpdatePrefsCmd{}), wrap(UpdateUserPreferences))
 		})
-//
-    //r.Get("api/org/process", wrap(GetProcessForCurrentOrg))
+		//
+		//r.Get("api/org/process", wrap(GetProcessForCurrentOrg))
 
 
 
@@ -155,54 +155,55 @@ func Register(r *macaron.Macaron) {
 			r.Put("/preferences", bind(dtos.UpdatePrefsCmd{}), wrap(UpdateOrgPreferences))
 
 
-      // process
-      //r.Get("/process", wrap(GetProcess))
-      r.Get("/process", wrap(GetProcessForCurrentOrg))
-      r.Post("/process", quota("process"),bind(m.AddProcessCommand{}), wrap(AddProcessToCurrentOrg))
-      r.Post("/parent", quota("process"),bind(m.AddProcessCommand{}), wrap(AddProcess))
-      r.Delete("/process/:processId",wrap(RemoveProcessCurrentOrg))
-      //r.Get("/process/:processId",wrap(GetProcessById))
-      r.Get("/process/edit/:processId",wrap(GetProcessById))
-      r.Get("/parent",wrap(GetProcessByParentName))
-      //r.Patch("/process/:processId", bind(dtos.UpdateProcessForm{}), wrap(UpdateProcess))
-      //r.Put("/process",bind(dtos))
-      r.Patch("/process/:processId", bind(dtos.UpdateProcessForm{}), wrap(UpdateProcess))
+			// process
+			//r.Get("/process", wrap(GetProcess))
+			r.Get("/process", wrap(GetProcessForCurrentOrg))
+			r.Post("/process", quota("process"),bind(m.AddProcessCommand{}), wrap(AddProcessToCurrentOrg))
+			r.Post("/parent", quota("process"),bind(m.AddProcessCommand{}), wrap(AddProcess))
+			r.Delete("/process/:processId",wrap(RemoveProcessCurrentOrg))
+			//r.Get("/process/:processId",wrap(GetProcessById))
+			r.Get("/process/edit/:processId",wrap(GetProcessById))
+			r.Get("/parent",wrap(GetProcessByParentName))
+			//r.Patch("/process/:processId", bind(dtos.UpdateProcessForm{}), wrap(UpdateProcess))
+			//r.Put("/process",bind(dtos))
+			r.Patch("/process/:processId", bind(dtos.UpdateProcessForm{}), wrap(UpdateProcess))
 
-    //Sub Process
-      r.Get("/subprocess", wrap(GetSubProcessForCurrentOrg))
-      r.Post("/subprocess", quota("subprocess"),bind(m.AddSubProcessCommand{}), wrap(AddSubProcessToCurrentOrg))
-      r.Delete("/subprocess/:subProcessId",wrap(RemoveSubProcessCurrentOrg))
-      r.Patch("/subprocess/:subProcessId", bind(dtos.UpdateSubProcessForm{}), wrap(UpdateSubProcess))
-      r.Get("/subprocess/edit/:subProcessId",wrap(GetSubProcessById))
-      r.Get("/subprocess/get/:processName",wrap(GetSubProcessByName))
+			//Sub Process
+			r.Get("/subprocess", wrap(GetSubProcessForCurrentOrg))
+			r.Post("/subprocess", quota("subprocess"),bind(m.AddSubProcessCommand{}), wrap(AddSubProcessToCurrentOrg))
+			r.Delete("/subprocess/:subProcessId",wrap(RemoveSubProcessCurrentOrg))
+			r.Patch("/subprocess/:subProcessId", bind(dtos.UpdateSubProcessForm{}), wrap(UpdateSubProcess))
+			r.Get("/subprocess/edit/:subProcessId",wrap(GetSubProcessById))
+			r.Get("/subprocess/get/:processName",wrap(GetSubProcessByName))
 
-// machine
-       r.Get("/machine",wrap(GetMachineForCurrentOrg))
-      r.Post("/machine", quota("machines"),bind(m.AddMachineCommand{}), wrap(AddMachineToCurrentOrg))
-      r.Delete("/machine/:machineId",wrap(RemoveMachineCurrentOrg))
-      r.Patch("/machine/:machineId", bind(dtos.UpdateMachineForm{}), wrap(UpdateMachine))
-      r.Get("/machine/:machineId",wrap(GetMachineById))
-      r.Get("/machine/edit/:machineId",wrap(GetMachineById))
-      //maintenance plan
-      r.Get("/maintenance",wrap(GetMaintenanceForCurrentOrg))
-      r.Post("/maintenance", quota("maintenance"),bind(m.AddMaintenanceCommand{}), wrap(AddMaintenanceToCurrentOrg))
-      r.Delete("/maintenance/:Id",wrap(RemoveMaintenanceCurrentOrg))
-      r.Get("/maintenance/edit/:Id",wrap(GetMaintenacneById))
-      r.Get("/maintenance/:Id",wrap(GetMaintenacneById))
-      r.Patch("/maintenance/:Id", bind(dtos.UpdateMaintenanceForm{}), wrap(UpdateMaintenance))
+			// machine
+			r.Get("/machine",wrap(GetMachineForCurrentOrg))
+			r.Post("/machine", quota("machines"),bind(m.AddMachineCommand{}), wrap(AddMachineToCurrentOrg))
+			r.Delete("/machine/:machineId",wrap(RemoveMachineCurrentOrg))
+			r.Patch("/machine/:machineId", bind(dtos.UpdateMachineForm{}), wrap(UpdateMachine))
+			r.Get("/machine/:machineId",wrap(GetMachineById))
+			r.Get("/machine/edit/:machineId",wrap(GetMachineById))
+			//maintenance plan
+			r.Get("/maintenance",wrap(GetMaintenanceForCurrentOrg))
+			r.Post("/maintenance", quota("maintenance"),bind(m.AddMaintenanceCommand{}), wrap(AddMaintenanceToCurrentOrg))
+			r.Delete("/maintenance/:Id",wrap(RemoveMaintenanceCurrentOrg))
+			r.Get("/maintenance/edit/:Id",wrap(GetMaintenacneById))
+			r.Get("/maintenance/:Id",wrap(GetMaintenacneById))
+			r.Patch("/maintenance/:Id", bind(dtos.UpdateMaintenanceForm{}), wrap(UpdateMaintenance))
 
-      //maintenance update
-      r.Get("/maintenanceAlerts",wrap(GetMaintenanceUpdateForCurrentOrg))
-      r.Get("/maintenanceAlerts/get/:interval",wrap(GetMaintenanceAlertsByInterval))
-      r.Delete("/maintenanceAlerts/:id",wrap(RemoveMaintenanceUpdateCurrentOrg))
-      r.Patch("/maintenanceAlerts/:id",wrap(UpdateMaintenanceCurrentOrg))
-      //user action
-      r.Post("/maintenanceAlertsUser", quota("maintenance_updated"),bind(m.AddMalfunalertActivity{}), wrap(AddMaintenanceAlertToCurrentOrg))
+			//maintenance update
+			r.Get("/maintenanceAlerts",wrap(GetMaintenanceUpdateForCurrentOrg))
+			r.Get("/maintenanceAlerts/get/:interval",wrap(GetMaintenanceAlertsByInterval))
+			r.Delete("/maintenanceAlerts/:id",wrap(RemoveMaintenanceUpdateCurrentOrg))
+			r.Patch("/maintenanceAlerts/:id",wrap(UpdateMaintenanceCurrentOrg))
+			//user action
+			r.Post("/maintenanceAlertsUser", quota("maintenance_updated"),bind(m.AddMalfunalertActivity{}), wrap(AddMaintenanceAlertToCurrentOrg))
 
-      r.Get("/maintenanceHistory",wrap(GetMaintenanceHistoryForCurrentOrg))
-      r.Get("/maintenanceHistory/get/:interval",wrap(GetMaintenanceHistoryByInterval))
-      r.Patch("/maintenanceHistory/:id",wrap(UpdateMaintenanceHistoryCurrentOrg))
-      r.Post("/maintenanceActivity", quota("maintenance_activity"),bind(m.AddMaintenanceActivity{}), wrap(AddMaintenanceActivityToCurrentOrg))
+			r.Get("/maintenanceHistory",wrap(GetMaintenanceHistoryForCurrentOrg))
+			r.Get("/maintenanceHistory/get/:interval",wrap(GetMaintenanceHistoryByInterval))
+			r.Patch("/maintenanceHistory/:id",wrap(UpdateMaintenanceHistoryCurrentOrg))
+			r.Get("/maintenanceActivity",wrap(GetMaintenanceActivitesForCurrentOrg))
+			r.Post("/maintenanceActivity", quota("maintenance_activity"),bind(m.AddMaintenanceActivity{}), wrap(AddMaintenanceActivityToCurrentOrg))
 		}, reqOrgAdmin)
 
 		// create new org
@@ -223,8 +224,8 @@ func Register(r *macaron.Macaron) {
 			r.Delete("/users/:userId", wrap(RemoveOrgUser))
 			r.Get("/quotas", wrap(GetOrgQuotas))
 			r.Put("/quotas/:target", bind(m.UpdateOrgQuotaCmd{}), wrap(UpdateOrgQuota))
-      //r.Post("/process", bind(m.AddProcessCommand{}), wrap(AddProcess))
-      r.Post("/process", quota("process"),bind(m.AddProcessCommand{}), wrap(AddProcessToCurrentOrg))
+			//r.Post("/process", bind(m.AddProcessCommand{}), wrap(AddProcess))
+			r.Post("/process", quota("process"),bind(m.AddProcessCommand{}), wrap(AddProcessToCurrentOrg))
 		}, reqGrafanaAdmin)
 
 

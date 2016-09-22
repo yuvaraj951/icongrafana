@@ -59,7 +59,10 @@ System.register(['../../core/core_module'], function(exports_1) {
                                                  .then(function (maintenanceHistory) {
                                                    _this.maintenanceHistory = maintenanceHistory;
                                                         });
-
+                    this.backendSrv.get('/api/org/maintenanceActivity')
+                                                                     .then(function (maintenanceActivity) {
+                                                                       _this.maintenanceActivity = maintenanceActivity;
+                                                                            });
                 };
                 OrgUsersCtrl.prototype.updateOrgUser = function (user) {
                     this.backendSrv.patch('/api/org/users/' + user.userId, user);
