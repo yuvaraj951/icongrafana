@@ -12,6 +12,7 @@ func addMaintenancHistoryTableMigrations(mg *Migrator) {
       {Name: "message", Type: DB_NVarchar, Length: 255, Nullable: false},
       {Name: "sended", Type: DB_DateTime, Nullable: false},
       {Name: "interval", Type: DB_NVarchar,Length: 20, Nullable: false},
+      {Name: "status", Type: DB_NVarchar,Length: 20, Nullable: false},
 
     },
     Indices: []*Index{
@@ -19,6 +20,7 @@ func addMaintenancHistoryTableMigrations(mg *Migrator) {
       {Cols: []string{"org"}, Type: IndexType},
       {Cols: []string{"message"}, Type: IndexType},
       {Cols: []string{"interval"}, Type: IndexType},
+      {Cols: []string{"status"}, Type: IndexType},
 
 
     },
