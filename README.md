@@ -7,16 +7,13 @@
 [Slack](http://slack.raintank.io) |
 [Email](mailto:contact@grafana.org)
 
-Grafana is an open source, feature rich metrics dashboard and graph editor for
+IconGrafana is an open source, feature rich metrics dashboard and graph editor for
 Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.
 
 ![](http://grafana.org/assets/img/start_page_bg.png)
 
 - [Install instructions](http://docs.grafana.org/installation/)
-- [What's New in Grafana 2.0](http://docs.grafana.org/guides/whats-new-in-v2/)
-- [What's New in Grafana 2.1](http://docs.grafana.org/guides/whats-new-in-v2-1/)
-- [What's New in Grafana 2.5](http://docs.grafana.org/guides/whats-new-in-v2-5/)
-- [What's New in Grafana 3.0](http://docs.grafana.org/guides/whats-new-in-v3/)
+
 
 ## Features
 ### Graphite Target Editor
@@ -85,7 +82,7 @@ the latest master builds [here](http://grafana.org/download/builds)
 ### Get Code
 
 ```bash
-go get github.com/grafana/grafana
+go get github.com/yuvaraj951/grafana
 ```
 
 Since imports of dependencies use the absolute path github.com/grafana/grafana within the $GOPATH,
@@ -95,9 +92,9 @@ directly to $GOPATH/src/github.com/grafana or you can create a symbolic link fro
 of the code to $GOPATH/src/github.com/grafana/grafana. The last options makes it possible to change
 easily the grafana repository you want to build.
 ```bash
-go get github.com/*your_account*/grafana
-mkdir $GOPATH/src/github.com/grafana
-ln -s  github.com/*your_account*/grafana $GOPATH/src/github.com/grafana/grafana
+cd $GOPATH/src/github.com
+mv yuvaraj951 grafana
+
 ```
 
 ### Building the backend
@@ -162,4 +159,4 @@ please [sign the CLA](http://docs.grafana.org/project/cla/)
 ## License
 
 Grafana is distributed under Apache 2.0 License.
-Work in progress Grafana 2.0 (with included Grafana backend)
+Work in progress IconGrafana 2.0 (with included Grafana backend)
