@@ -27,10 +27,8 @@ func AddMigrations(mg *Migrator) {
   addMachineMigrations(mg)
 
   addMaintenanceMigrations(mg)
-  addMaintenancHistoryeMigrations(mg)
-  addMalFunAlertActivityMigrations(mg)
-  addMaintenancHistoryTableMigrations(mg)
-  addMaintenanceActivityMigrations(mg)
+  addAlertHistoryeMigrations(mg)
+
 }
 
 func addMigrationLogMigrations(mg *Migrator) {
