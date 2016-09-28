@@ -198,18 +198,7 @@ func Register(r *macaron.Macaron) {
 			r.Get("/alerts/completed",wrap(GetCompletedAlertHistory))
 			r.Patch("/alerts/pending/:id", bind(dtos.UpdateAlertActionForm{}), wrap(UpdateAlertAction))
 			//maintenance update
-			r.Get("/maintenanceAlerts",wrap(GetMaintenanceUpdateForCurrentOrg))
-			r.Get("/maintenanceAlerts/get/:interval",wrap(GetMaintenanceAlertsByInterval))
-			r.Delete("/maintenanceAlerts/:id",wrap(RemoveMaintenanceUpdateCurrentOrg))
-			r.Patch("/maintenanceAlerts/:id",wrap(UpdateMaintenanceCurrentOrg))
-			//user action
-			r.Post("/maintenanceAlertsUser", quota("maintenance_updated"),bind(m.AddMalfunalertActivity{}), wrap(AddMaintenanceAlertToCurrentOrg))
 
-			r.Get("/maintenanceHistory",wrap(GetMaintenanceHistoryForCurrentOrg))
-			r.Get("/maintenanceHistory/get/:interval",wrap(GetMaintenanceHistoryByInterval))
-			r.Patch("/maintenanceHistory/:id",wrap(UpdateMaintenanceHistoryCurrentOrg))
-			r.Get("/maintenanceActivity",wrap(GetMaintenanceActivitesForCurrentOrg))
-			r.Post("/maintenanceActivity", quota("maintenance_activity"),bind(m.AddMaintenanceActivity{}), wrap(AddMaintenanceActivityToCurrentOrg))
 		}, reqOrgAdmin)
 
 		// create new org
