@@ -93,39 +93,53 @@ type UserUpdated struct {
 	Mobile    string    `json:"mobile"`
 }
 type ProcessUpdated struct {
-  Timestamp time.Time `json:"timestamp"`
-  OrgId    int64            `json:"orgId"`
-  ProcessId       int64   `json:"processId"`
-  ProcessName     string    `json:"processName"`
-  UpdatedBy       string      `json:"updatedBy"`
+	Timestamp time.Time `json:"timestamp"`
+	OrgId    int64            `json:"orgId"`
+	ProcessId       int64   `json:"processId"`
+	ProcessName     string    `json:"processName"`
+	UpdatedBy       string      `json:"updatedBy"`
 
 }
 type SubProcessUpdated struct {
-  Timestamp time.Time `json:"timestamp"`
-  OrgId    int64            `json:"orgId"`
-  SubProcessId       int64   `json:"subProcessId"`
-  SubProcessName     string    `json:"subProcessName"`
-  ProcessName     string    `json:"processName"`
-  UpdatedBy       string      `json:"updatedBy"`
+	Timestamp time.Time `json:"timestamp"`
+	OrgId    int64            `json:"orgId"`
+	SubProcessId       int64   `json:"subProcessId"`
+	SubProcessName     string    `json:"subProcessName"`
+	ProcessName     string    `json:"processName"`
+	UpdatedBy       string      `json:"updatedBy"`
 
 }
 type MachineUpdated struct {
-  Timestamp time.Time `json:"timestamp"`
-  OrgId    int64            `json:"orgId"`
-  MachineId       int64   `json:"machineId"`
-  MachineName     string    `json:"machineName" binding:"Required"`
-  Description string     `json:"description" `
-  UpdatedBy       string      `json:"updatedBy" `
-  Vendor          string     `json:"vendor" `
+	Timestamp time.Time `json:"timestamp"`
+	OrgId    int64            `json:"orgId"`
+	MachineId       int64   `json:"machineId"`
+	MachineName     string    `json:"machineName" binding:"Required"`
+	Description string     `json:"description" `
+	UpdatedBy       string      `json:"updatedBy" `
+	Vendor          string     `json:"vendor" `
 
 }
 type MaintenanceUpdated struct {
-  Timestamp time.Time `json:"timestamp"`
-  Org    int64            `json:"org"`
-  Id       int64           `json:"id"`
-  Component   string     `json:"componentName"`
-  Parameter      string    `json:"parameter"`
-  Message        string    `json:"message"`
-  Interval         string   `json:"interval"`
+	Timestamp time.Time `json:"timestamp"`
+	Org    int64            `json:"org"`
+	Id       int64           `json:"id"`
+	Component   string     `json:"componentName"`
+	Parameter      string    `json:"parameter"`
+	Message        string    `json:"message"`
+	Interval         string   `json:"interval"`
+
+}
+type AlertActionUpdate struct {
+	Timestamp time.Time `json:"timestamp"`
+	Id           int64             `json:"id"`
+	OrgId        int64   `json:"orgId"`
+	AlertMessage string     `json:"alertMessage"`
+	Sended       string    `json:"sended"`
+	Interval     string   `json:"interval"`
+	Status       string      `json:"status"`
+	Name         string      `json:"name"`
+	Message      string        `json:"message"`
+	Updated      time.Time       `json:"updated"`
+	AlertType    string          `json:"alertType"`
 
 }

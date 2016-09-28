@@ -14,4 +14,5 @@ define([
    './orgEditMaintenance',
     './orgEditSubProcess',
     './orgAlertsCtrl',
+      './orgActionAlerts',
 ], function () {});

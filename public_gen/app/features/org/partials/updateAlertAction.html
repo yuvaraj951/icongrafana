@@ -1,0 +1,42 @@
+<navbar icon="fa fa-bell-o" title=" Alerts" title-url="org/alerts">
+</navbar>
+<div class="page-container">
+    <div class="page-header">
+        <h1>Update  Actions</h1>
+    </div>
+
+    <div class="modal-content">
+
+
+        <form name="updateAlertActionForm" class="gf-form-group">
+            <div class="gf-form">
+                <span class="gf-form-label width-9" >Alert Message: &nbsp;</span>
+                <span class="highlight-word">{{pendingActionAlert.alertMessage}}</span>
+            </div>
+            <div class="gf-form">
+                <span class="gf-form-label width-9">Alert Type: &nbsp;</span>
+                <span class="highlight-word">{{pendingActionAlert.alertType}}</span>
+            </div>
+            <div class="gf-form" ng-if="'Maintenance Alert'==pendingActionAlert.alertType">
+                <span class="gf-form-label width-9">Alert Interval: &nbsp;</span>
+                <span class="highlight-word">{{pendingActionAlert.interval}}</span>
+            </div>
+            <div class="gf-form">
+                <span class="gf-form-label width-9">Name: &nbsp;</span>
+                <span class="highlight-word">{{contextSrv.user.name}}</span>
+            </div>
+            <div class="gf-form">
+                <span class="gf-form-label width-9 " style="height: 70px;">Message<br></span>
+                <textarea class="gf-form-input max-width-21  height-36" type="text" required ng-model="pendingActionAlert.message"></textarea>
+            </div>
+
+            <div class="gf-form">
+                <button type="submit" class="btn gf-form-btn btn-success" ng-click="updateAlertAction(pendingActionAlert)">Update</button>
+            </div>
+
+            <div class="clearfix"></div>
+
+        </form>
+
+    </div>
+</div>

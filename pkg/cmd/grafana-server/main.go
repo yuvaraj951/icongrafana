@@ -29,8 +29,8 @@ var commit = "NA"
 var buildstamp string
 var build_date string
 
-var configFile = flag.String("config", "/home/gogimcoitdev2/mycode/go/src/github.com/grafana/grafana/conf/defaults.ini", "path to config file")
-var homePath = flag.String("homepath", "/home/gogimcoitdev2/mycode/go/src/github.com/grafana/grafana", "path to grafana install/home path, defaults to working directory")
+var configFile = flag.String("config", "/home/gogimcoitdev2/IconGrafana/go/src/github.com/grafana/grafana/conf/defaults.ini", "path to config file")
+var homePath = flag.String("homepath", "/home/gogimcoitdev2/IconGrafana/go/src/github.com/grafana/grafana", "path to grafana install/home path, defaults to working directory")
 var pidFile = flag.String("pidfile", "", "path to pid file")
 var exitChan = make(chan int)
 

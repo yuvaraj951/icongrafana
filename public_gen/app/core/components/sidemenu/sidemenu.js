@@ -140,7 +140,7 @@ System.register(['app/core/config', 'jquery', '../../core_module'], function(exp
 
                         });
                         if (config_1.default.allowOrgCreate) {
-                            _this.AdmMenu.push({ text: "User Actions", icon: "fa fa-user", url: _this.getUrl('/org/maintenanceAlerts') });
+                            _this.AdmMenu.push({ text: "User Actions", icon: "fa fa-user", url: _this.getUrl('/org/alerts') });
                         }
                     });
                 };

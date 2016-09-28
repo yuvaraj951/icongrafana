@@ -38,7 +38,7 @@ func Register(r *macaron.Macaron) {
 	r.Get("/datasources/edit/*", reqSignedIn, Index)
 	r.Get("/org/users/", reqSignedIn, Index)
 	r.Get("/org/process/", reqSignedIn, Index)
-	r.Get("/org/maintenanceAlerts/", reqSignedIn, Index)
+	r.Get("/org/alerts/", reqSignedIn, Index)
 	r.Get("/org/process/edit/*", reqSignedIn, Index)
 	r.Get("/org/machine/", reqSignedIn, Index)
 	r.Get("/org/apikeys/", reqSignedIn, Index)
@@ -191,6 +191,12 @@ func Register(r *macaron.Macaron) {
 			r.Get("/maintenance/:Id",wrap(GetMaintenacneById))
 			r.Patch("/maintenance/:Id", bind(dtos.UpdateMaintenanceForm{}), wrap(UpdateMaintenance))
 
+
+			//Alert History
+			r.Get("/alerts/pending",wrap(GetPendingAlertHistory))
+			r.Get("/alerts/pending/action/:id",wrap(GetPendingAlertActionHistory))
+			r.Get("/alerts/completed",wrap(GetCompletedAlertHistory))
+			r.Patch("/alerts/pending/:id", bind(dtos.UpdateAlertActionForm{}), wrap(UpdateAlertAction))
 			//maintenance update
 			r.Get("/maintenanceAlerts",wrap(GetMaintenanceUpdateForCurrentOrg))
 			r.Get("/maintenanceAlerts/get/:interval",wrap(GetMaintenanceAlertsByInterval))

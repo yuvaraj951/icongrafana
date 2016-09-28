@@ -10,11 +10,12 @@ System.register(['../../core/core_module'], function(exports_1) {
         execute: function() {
             OrgUsersCtrl = (function () {
                 /** @ngInject */
-                function OrgUsersCtrl($scope, $http, backendSrv,$location) {
+                function OrgUsersCtrl($scope, $http, backendSrv,$location,$routeParams) {
                     this.$scope = $scope;
                     this.$http = $http;
                     this.backendSrv = backendSrv;
                     this.$location=$location;
+                    this.$routeParams=$routeParams;
                     this.user = {
                         loginOrEmail: '',
                         role: 'Viewer',
@@ -51,7 +52,15 @@ System.register(['../../core/core_module'], function(exports_1) {
                                             .then(function (subprocess) {
                                                _this.subprocess = subprocess;
                                                       });
-                    this.backendSrv.get('/api/org/maintenanceAlerts')
+                    this.backendSrv.get('/api/org/alerts/pending')
+                     .then(function (pendingAlerts) {
+                       _this.pendingAlerts = pendingAlerts;
+                          });
+                    this.backendSrv.get('/api/org/alerts/completed')
+                       .then(function (completedAlerts) {
+                          _this.completedAlerts = completedAlerts;
+                            });
+                    /*this.backendSrv.get('/api/org/maintenanceAlerts')
                      .then(function (maintenanceAlerts) {
                        _this.maintenanceAlerts = maintenanceAlerts;
                             });
@@ -62,7 +71,7 @@ System.register(['../../core/core_module'], function(exports_1) {
                     this.backendSrv.get('/api/org/maintenanceActivity')
                                                                      .then(function (maintenanceActivity) {
                                                                        _this.maintenanceActivity = maintenanceActivity;
-                                                                            });
+                                                                            });*/
                 };
                 OrgUsersCtrl.prototype.updateOrgUser = function (user) {
                     this.backendSrv.patch('/api/org/users/' + user.userId, user);
@@ -241,12 +250,9 @@ System.register(['../../core/core_module'], function(exports_1) {
                                                                });
                                                            };
 
-OrgUsersCtrl.prototype.openMaintenanceAlertModal = function (mAlert) {
-this.maintenanceAlertsSent(mAlert);
+OrgUsersCtrl.prototype.openPendingAlertModal = function (pendingAlert) {
      var modalScope = this.$scope.$new();
-    this.$scope.alert =mAlert;
-
-         this.$scope.appEvent('show-modal', {
+          this.$scope.appEvent('show-modal', {
           src: 'public/app/features/org/partials/addAction.html',
             modalClass: 'invite-modal',
              scope: modalScope

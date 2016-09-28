@@ -16,7 +16,7 @@ type AlertHistory struct {
 	AlertMessage     string
 	Sended           time.Time
 	Interval         string
-	Status           AlertStatus
+	Status           string
 	Name             string
 	Message          string
 	Updated          time.Time
@@ -29,19 +29,35 @@ type AlertHistoryDTO struct {
 	AlertMessage string     `json:"alertMessage"`
 	Sended       string    `json:"sended"`
 	Interval     string   `json:"interval"`
-	Status       AlertStatus      `json:"status"`
+	Status       string      `json:"status"`
 	Name         string      `json:"name"`
-	Message      string        `json:"Message"`
+	Message      string        `json:"message"`
 	Updated      time.Time       `json:"updated"`
-	AlertType  string          `json:"alertType"`
+	AlertType    string          `json:"alertType"`
 
 }
-type GetAlertHistoryQuery struct {
+type GetPendingAlertHistory struct {
 	OrgId    int64
 	Result []*AlertHistoryDTO
 }
-type GetAlertHistoryByStatusQuery struct {
+type GetCompletedAlertHistory struct {
 	OrgId    int64
-	Status   AlertStatus
 	Result []*AlertHistoryDTO
+}
+type GetPendingAlertActionHistory struct {
+	Id       int64
+	Result *AlertHistory
+}
+type UpdateAlertActionCommand struct {
+	Id           int64             `json:"-"`
+	OrgId        int64   `json:"orgId"`
+	AlertMessage string     `json:"alertMessage"`
+	Sended       string    `json:"sended"`
+	Interval     string   `json:"interval"`
+	Status       string      `json:"status"`
+	Name         string      `json:"name"`
+	Message      string        `json:"message"`
+	Updated      time.Time       `json:"updated"`
+	AlertType    string          `json:"alertType"`
+
 }

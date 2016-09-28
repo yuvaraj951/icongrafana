@@ -1,6 +1,6 @@
 package dtos
 
-
+import "time"
 
 type AddProcessForm struct {
   ProcessName         string     `json:"processName"`
@@ -36,4 +36,17 @@ type UpdateMaintenanceForm struct {
   Parameter      string    `json:"parameter"`
   Message        string    `json:"message"`
   Interval         string   `json:"interval"`
+}
+type UpdateAlertActionForm struct {
+  Id           int64             `json:"id"`
+  OrgId        int64   `json:"orgId"`
+  AlertMessage string     `json:"alertMessage"`
+  Sended       string    `json:"sended"`
+  Interval     string   `json:"interval"`
+  Status       string      `json:"status"`
+  Name         string      `json:"name"`
+  Message      string        `json:"message"`
+  Updated      time.Time       `json:"updated"`
+  AlertType    string          `json:"alertType"`
+
 }

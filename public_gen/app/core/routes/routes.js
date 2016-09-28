@@ -79,13 +79,13 @@ System.register(['./dashboard_loaders', 'app/core/core_module', './bundle_loader
                     controllerAs: 'ctrl',
                     resolve: loadOrgBundle,
                 })
-      .when('/org/maintenanceAlerts', {
-                          templateUrl: 'public/app/features/org/partials/maintenanceAlerts.html',
+      .when('/org/alerts', {
+                          templateUrl: 'public/app/features/org/partials/alert.html',
                           controller: 'OrgUsersCtrl',
                           controllerAs: 'ctrl',
                           resolve: loadOrgBundle,
                       })
-                .when('/org/machine', {
+      .when('/org/machine', {
                                     templateUrl: 'public/app/features/org/partials/process.html',
                                     controller: 'OrgUsersCtrl',
                                     controllerAs: 'ctrl',
@@ -110,7 +110,7 @@ System.register(['./dashboard_loaders', 'app/core/core_module', './bundle_loader
                               resolve: loadOrgBundle,
                           })
 
-                       .when('/org/machine/edit/:machineId', {
+  .when('/org/machine/edit/:machineId', {
                                                   templateUrl: 'public/app/features/org/partials/updateMachine.html',
                                                   controller: 'OrgEditMachine',
                                                   controllerAs: 'ctrl',
@@ -122,6 +122,12 @@ System.register(['./dashboard_loaders', 'app/core/core_module', './bundle_loader
                   controllerAs: 'ctrl',
                   resolve: loadOrgBundle,
                     })
+     .when('/org/alerts/edit/:Id', {
+                     templateUrl: 'public/app/features/org/partials/updateAlertAction.html',
+                      controller: 'OrgActionAlerts',
+                       controllerAs: 'ctrl',
+                       resolve: loadOrgBundle,
+                         })
      .when('/org/maintenanceAlert/edit/:id', {
                     templateUrl: 'public/app/features/org/partials/userAction.html',
                      controller: 'OrgAlertsCtrl',
