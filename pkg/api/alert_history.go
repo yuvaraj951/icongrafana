@@ -64,12 +64,12 @@ func UpdateAlertActionHelper(alertId int64,form dtos.UpdateAlertActionForm) Resp
 	logger.Info("updatedProcess2 %s")
 	if err := bus.Dispatch(&cmd); err != nil {
 		if err == m.ErrOrgNameTaken {
-			return ApiError(400, "Organization name taken", err)
+			return ApiError(400, "Alert name taken", err)
 		}
-		return ApiError(500, "Failed to update organization", err)
+		return ApiError(500, "Failed to Alerts", err)
 	}
 
-	return ApiSuccess("Successfully done the action ")
+	return ApiSuccess("Successfully updated the alerts ")
 }
 
 func GetPendingAlertActionHistory(c *middleware.Context) Response {

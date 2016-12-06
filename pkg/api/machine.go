@@ -79,7 +79,7 @@ func removeOrgMachineHelper(orgId int64, machineId int64) Response {
     return ApiError(500, "Failed to remove user from organization", err)
   }
 
-  return ApiSuccess("User removed from organization")
+  return ApiSuccess("Machine removed from organization")
 }
 
 
@@ -99,10 +99,10 @@ func updateMachineHelper(machineId int64,form dtos.UpdateMachineForm) Response {
     if err == m.ErrOrgNameTaken {
       return ApiError(400, "Organization name taken", err)
     }
-    return ApiError(500, "Failed to update organization", err)
+    return ApiError(500, "Failed to update Machine", err)
   }
 
-  return ApiSuccess("Organization updated")
+  return ApiSuccess("Machine updated sucessfully")
 }
 
 func GetMachineById(c *middleware.Context) Response {
@@ -117,7 +117,7 @@ func getMachineUserProfile(machineId int64) Response {
   logger := log.New("main")
   logger.Info("GetMachine1234 %s")
   if err := bus.Dispatch(&query); err != nil {
-    return ApiError(500, "Failed to get user", err)
+    return ApiError(500, "Failed to get Machine", err)
   }
   machine := query.Result
   result := m.MachineDetailsDTO{

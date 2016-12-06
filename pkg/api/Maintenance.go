@@ -14,7 +14,7 @@ func getMaintenanceHelper(OrgId int64) Response {
 
   query :=m.GetMaintenanceQuery{Org:OrgId}
   if err := bus.Dispatch(&query); err != nil {
-    return ApiError(500, "Failed to get Machines", err)
+    return ApiError(500, "Failed to get Maintenance", err)
   }
 
   return Json(200, query.Result)
@@ -43,11 +43,11 @@ func addMaintenanceHelper(cmd m.AddMaintenanceCommand) Response {
 
 
   if err := bus.Dispatch(&query); err != nil {
-    return ApiError(500, "Could not add process to organization", err)
+    return ApiError(500, "Could not add Maintenance to organization", err)
   }
 
 
-  return ApiSuccess("Process Sucessfully added ")
+  return ApiSuccess("Maintenance Sucessfully added ")
 
 }
 
@@ -80,7 +80,7 @@ func removeOrgMaintenanceHelper(orgId int64, Id int64) Response {
     return ApiError(500, "Failed to remove user from organization", err)
   }
 
-  return ApiSuccess("User removed from organization")
+  return ApiSuccess("Maintenance removed from organization")
 }
 
 
@@ -103,7 +103,7 @@ func updateMaintenanceHelper(maintenanceId int64,form dtos.UpdateMaintenanceForm
     return ApiError(500, "Failed to update organization", err)
   }
 
-  return ApiSuccess("Organization updated")
+  return ApiSuccess("Maintenance updated")
 }
 
 func GetMaintenacneById(c *middleware.Context) Response {
@@ -118,7 +118,7 @@ func getMaintenanceUserProfile(Id int64) Response {
   logger := log.New("main")
   logger.Info("GetMachine1234 %s")
   if err := bus.Dispatch(&query); err != nil {
-    return ApiError(500, "Failed to get user", err)
+    return ApiError(500, "Failed to get Maintenance", err)
   }
   maintenance := query.Result
   result := m.MaintenanceDetailsDTO{
