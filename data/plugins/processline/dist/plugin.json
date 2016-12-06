@@ -6,16 +6,16 @@
   "info": {
     "description": "Process Line panel for grafana",
     "author": {
-      "name": "Yuvaraj.",
-      "url": "http://raintank.io"
+      "name": "Gimco",
+      "url": "http://it.gogimco.com/"
     },
-    "keywords": ["processline", "panel"],
-    "version": "1.0.0",
-    "updated": "2015-03-24"
+    "keywords": ["processline", "panel","chart"],
+      "version": "1.0.0",
+    "updated": "2016-11-19"
   },
 
   "dependencies": {
-    "grafanaVersion": "3.x.x",
+
     "plugins": [ ]
   }
 }

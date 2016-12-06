@@ -1,1 +1,71 @@
-<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8">  <title>Title</title>  <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>  <style>#box {background: url('https://gimco-my.sharepoint.com/personal/chaitanyay_gogimco_com/_layouts/15/guestaccess.aspx?guestaccesstoken=gicMENUtZ5ZU%2blKjMxJxixP1O%2b9zhxhJuKkblsM2Y7A%3d&docid=1d836d1e444254a819e9e6cc3cb901196&rev=1');background-repeat: no-repeat;padding: 20px;width: 200px;height: 150px;}</style></head><body><div class="imageSub">  <h2>{{ctrl.CompanyName}}</h2>  <img src="https://gimco-my.sharepoint.com/personal/chaitanyay_gogimco_com/_layouts/15/guestaccess.aspx?guestaccesstoken=NCfzMlyRyNvBjSG7hlX%2fclMAINAe5%2b3itYOFzQpOxu0%3d&docid=176da5d1bb15e433892bec03a4c9c7deb&rev=1" style="width:100%;height: 500px;align-content: center;margin-left: -300px;" >  <div ng-app='myApp'>    <div ng-controller="myController">      <div ng-draggable id="box"></div>    </div>  </div></div></body></html>
+<div class="flowchart" style="background-image:url('public/plugins/grafana-processline-panel/img/demofinal.png');height: 700px; background-repeat: no-repeat;"
+     mouse-capture
+     ng-keydown="ctrl.keyDown($event)"
+     ng-keyup="ctrl.keyUp($event)"
+>
+
+    <style>
+   #shape{
+   width : 130px;
+    height: 140px;
+    background-color:white;
+    border: 4px solid #f0914b;
+     border-radius: 10px 30px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #589666;
+}
+#shape:hover{
+
+  box-shadow: 2px 2px 2px red;
+
+
+}
+.circle {
+      width: 15px;
+height: 15px;
+-webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+border-radius: 15px;
+background: #589666;
+margin-left: 110px;
+margin-top: -2px;
+box-shadow: 1px 1px 1px #589666;
+ }
+ .circle:hover{
+ box-shadow: 2px 2px 2px red;
+ }
+
+</style>
+
+
+
+    <div class="nodemain gf-size-auto" ng-repeat="nodes in ctrl.panel.chartDataModel.nodes" >
+        <div id="shape"  ng-draggable='dragOptions' chart='nodes'
+        style="position: absolute;
+        top: {{nodes.y}}px;
+        left: {{nodes.x}}px; "
+        >
+            <div style="color: orange;text-align:center;" *ngIf="nodes.name==ctrl.metricsNodeName">{{nodes.name}}
+
+
+            <div id="editMenu" class="editMenu" >
+
+                  <table ng-repeat="node in nodes.Data" style="margin: 5px;">
+
+                      <tr >
+                          <td style="color:red;" ng-repeat="series in ctrl.series">{{series.alias}}</td><td style="color:black;" >:</td>
+                          <td style="color:green;"ng-repeat="series in ctrl.series" >{{node.Name.value}}</td>
+                      </tr>
+                  </table>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+

@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       src_to_dist: {
         cwd: 'src',
         expand: true,
-        src: ['**/*','!**/*.scss','**/*.js'],
+        src: ['**/*','!**/*.scss','!**/*.js'],
         dest: 'dist'
       },
       pluginDef: {
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
     watch: {
       rebuild_all: {
-        files: ['src/**/*', 'plugin.json'],
+        files: ['src/**/*', 'plugin.json','src/flowchart/**/*'],
         tasks: ['default'],
         options: {spawn: false}
       },
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: 'src',
           expand: true,
-          src: ['*.js'],
+          src: ['*.js','flowchart/*.js'],
           dest: 'dist',
           ext:'.js'
         }]
